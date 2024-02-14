@@ -3,7 +3,11 @@
 """
     puzzleparse(filename::String) -> Dict{Int64, MyPuzzleRecordModel}
 
-TODO: Add documentation
+    Takes in an argument of filename::String
+    Returns a Dict{Int64,MyPuzzleRecordModel}
+
+    Creates a dictionary of MyPuzzleRecordModels with the key of the dictionary being the line number in the inputted filename
+    and the value being a MyPuzzleRecordModel.
 """
 function puzzleparse(filename::String)::Dict{Int64, MyPuzzleRecordModel}
     
@@ -15,7 +19,8 @@ function puzzleparse(filename::String)::Dict{Int64, MyPuzzleRecordModel}
     open(filename, "r") do io
         for line ∈ eachline(io)
             
-            # TODO: do something with this line of text
+            records[linecounter]=_build_puzzle_record_model(record=line)
+            linecounter += 1
 
         end
     end
